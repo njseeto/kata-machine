@@ -14,15 +14,16 @@ export default class DoublyLinkedList<T> {
     this.tail = undefined;
   }
 
-  private debug() {
-    let curr = this.head;
-    let out = "";
-    for (let i = 0; curr && i < this.length; i++) {
-      out += `${i} => ${curr.value} `;
-      curr = curr.next;
-    }
-    console.log(out);
-  }
+  //  comment out below to use debug function
+  // private debug() {
+  //   let curr = this.head;
+  //   let out = "";
+  //   for (let i = 0; curr && i < this.length; i++) {
+  //     out += `${i} => ${curr.value} `;
+  //     curr = curr.next;
+  //   }
+  //   console.log(out);
+  // }
 
   prepend(item: T): void {
     const node = {value: item} as Node<T>;
@@ -68,14 +69,12 @@ export default class DoublyLinkedList<T> {
 
     if (!this.tail){
       this.head = this.tail = node;
-      this.debug();
       return;
     }
 
     node.prev = this.tail;
     this.tail.next = node;
     this.tail = node;
-    this.debug();
   }
 
   remove(item: T): T | undefined {
